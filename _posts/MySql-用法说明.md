@@ -275,7 +275,7 @@ ALTER TABLE t AUTO_INCREMENT = 100;
 mysql> CREATE TABLE tmp SELECT last_name, first_name, sex FROM person_tbl  GROUP BY (last_name, first_name, sex);
 mysql> DROP TABLE person_tbl;
 mysql> ALTER TABLE tmp RENAME TO person_tbl;
-```  
+```
 
 # 导出数据
 ```
@@ -334,7 +334,7 @@ password *****
 ```
 $ mysqldump -u root -p database_name \
        | mysql -h other-host.com database_name
-```  
+```
 
 # 导入数据
 ```
