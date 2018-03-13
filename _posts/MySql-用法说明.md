@@ -230,3 +230,130 @@ BLOB是一个二进制大对象，可以容纳可变数量的数据。有4种BLO
   * SET AUTOCOMMIT=1 开启自动提交
 
 # 临时表
+```
+CREATE TEMPORARY TABLE SalesSummary (
+    -> product_name VARCHAR(50) NOT NULL
+    -> , total_sales DECIMAL(12,2) NOT NULL DEFAULT 0.00
+    -> , avg_unit_price DECIMAL(7,2) NOT NULL DEFAULT 0.00
+    -> , total_units_sold INT UNSIGNED NOT NULL DEFAULT 0
+);
+```
+# 元数据
+|命令	|描述|
+|:---	|:---	|
+|SELECT VERSION( )|服务器版本信息|
+|SELECT DATABASE( )|当前数据库名 (或者返回空)|
+|SELECT USER( )	|当前用户名|
+|SHOW STATUS	|服务器状态|
+|SHOW VARIABLES|	服务器配置变量|
+#序列
+```
+CREATE TABLE insect
+    -> (
+    -> id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    -> PRIMARY KEY (id),
+    -> name VARCHAR(30) NOT NULL, # type of insect
+    -> date DATE NOT NULL, # date collected
+    -> origin VARCHAR(30) NOT NULL # where collected
+)engine=innodb auto_increment=100 charset=utf8;
+```
+```
+mysql> ALTER TABLE insect DROP id;
+mysql> ALTER TABLE insect
+    -> ADD id INT UNSIGNED NOT NULL AUTO_INCREMENT FIRST,
+    -> ADD PRIMARY KEY (id);
+```
+```
+ALTER TABLE t AUTO_INCREMENT = 100;
+```
+#删除重复数据
+```
+mysql> CREATE TABLE tmp SELECT last_name, first_name, sex FROM person_tbl  GROUP BY (last_name, first_name, sex);
+mysql> DROP TABLE person_tbl;
+mysql> ALTER TABLE tmp RENAME TO person_tbl;
+```
+#导出数据
+```
+SELECT * FROM runoob_tbl 
+INTO OUTFILE '/tmp/tutorials.txt';
+```
+以下实例为导出 CSV 格式：
+```
+SELECT * FROM passwd INTO OUTFILE '/tmp/tutorials.txt'
+FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n';
+```
+```
+SELECT a,b,a+b INTO OUTFILE '/tmp/result.text'
+FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+FROM test_table;
+```
+
+导出表作为原始数据
+```
+mysqldump -u root -p --no-create-info \
+            --tab=/tmp RUNOOB runoob_tbl
+password ******
+```
+
+导出SQL格式的数据到指定文件，如下所示：
+```
+$ mysqldump -u root -p RUNOOB runoob_tbl > dump.txt
+password ******
+```
+如果你需要导出整个数据库的数据，可以使用以下命令：
+```
+$ mysqldump -u root -p RUNOOB > database_dump.txt
+password ******
+```
+如果需要备份所有数据库，可以使用以下命令：
+```
+$ mysqldump -u root -p --all-databases > database_dump.txt
+password ******
+```
+将数据表及数据库拷贝至其他主机
+如果你需要将数据拷贝至其他的 MySQL 服务器上, 你可以在 mysqldump 命令中指定数据库名及数据表。
+在源主机上执行以下命令，将数据备份至 dump.txt 文件中:
+```
+$ mysqldump -u root -p database_name table_name > dump.txt
+password *****
+```
+如果完整备份数据库，则无需使用特定的表名称。
+如果你需要将备份的数据库导入到MySQL服务器中，可以使用以下命令，使用以下命令你需要确认数据库已经创建：
+```
+$ mysql -u root -p database_name < dump.txt
+password *****
+```
+你也可以使用以下命令将导出的数据直接导入到远程的服务器上，但请确保两台服务器是相通的，是可以相互访问的：</p>
+```
+$ mysqldump -u root -p database_name \
+       | mysql -h other-host.com database_name
+```
+#导入数据
+```
+LOAD DATA LOCAL INFILE 'dump.txt' INTO TABLE mytbl;
+```
+```
+mysql> LOAD DATA LOCAL INFILE 'dump.txt' INTO TABLE mytbl
+  -> FIELDS TERMINATED BY ':'
+  -> LINES TERMINATED BY '\r\n';
+```
+```
+mysql> LOAD DATA LOCAL INFILE 'dump.txt' 
+    -> INTO TABLE mytbl (b, c, a);
+```
+```
+$ mysqlimport -u root -p --local database_name dump.txt
+password *****
+```
+```
+$ mysqlimport -u root -p --local --fields-terminated-by=":" \
+   --lines-terminated-by="\r\n"  database_name dump.txt
+password *****
+```
+```
+$ mysqlimport -u root -p --local --columns=b,c,a \
+    database_name dump.txt
+password *****
+```
