@@ -232,12 +232,13 @@ BLOB是一个二进制大对象，可以容纳可变数量的数据。有4种BLO
 # 临时表
 ```
 CREATE TEMPORARY TABLE SalesSummary (
-    -> product_name VARCHAR(50) NOT NULL
-    -> , total_sales DECIMAL(12,2) NOT NULL DEFAULT 0.00
-    -> , avg_unit_price DECIMAL(7,2) NOT NULL DEFAULT 0.00
-    -> , total_units_sold INT UNSIGNED NOT NULL DEFAULT 0
+    product_name VARCHAR(50) NOT NULL, 
+    total_sales DECIMAL(12,2) NOT NULL DEFAULT 0.00, 
+    avg_unit_price DECIMAL(7,2) NOT NULL DEFAULT 0.00,
+    total_units_sold INT UNSIGNED NOT NULL DEFAULT 0
 );
 ```
+
 # 元数据
 |命令	|描述|
 |:---	|:---	|
@@ -246,6 +247,8 @@ CREATE TEMPORARY TABLE SalesSummary (
 |SELECT USER( )	|当前用户名|
 |SHOW STATUS	|服务器状态|
 |SHOW VARIABLES|	服务器配置变量|
+    
+    
 #序列
 ```
 CREATE TABLE insect
@@ -266,12 +269,14 @@ mysql> ALTER TABLE insect
 ```
 ALTER TABLE t AUTO_INCREMENT = 100;
 ```
+
 #删除重复数据
 ```
 mysql> CREATE TABLE tmp SELECT last_name, first_name, sex FROM person_tbl  GROUP BY (last_name, first_name, sex);
 mysql> DROP TABLE person_tbl;
 mysql> ALTER TABLE tmp RENAME TO person_tbl;
 ```
+
 #导出数据
 ```
 SELECT * FROM runoob_tbl 
@@ -330,6 +335,7 @@ password *****
 $ mysqldump -u root -p database_name \
        | mysql -h other-host.com database_name
 ```
+
 #导入数据
 ```
 LOAD DATA LOCAL INFILE 'dump.txt' INTO TABLE mytbl;
