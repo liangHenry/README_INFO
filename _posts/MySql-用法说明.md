@@ -249,7 +249,7 @@ CREATE TEMPORARY TABLE SalesSummary (
 |SHOW VARIABLES|	服务器配置变量|
     
     
-#序列
+# 序列
 ```
 CREATE TABLE insect
     -> (
@@ -270,14 +270,14 @@ mysql> ALTER TABLE insect
 ALTER TABLE t AUTO_INCREMENT = 100;
 ```
 
-#删除重复数据
+# 删除重复数据
 ```
 mysql> CREATE TABLE tmp SELECT last_name, first_name, sex FROM person_tbl  GROUP BY (last_name, first_name, sex);
 mysql> DROP TABLE person_tbl;
 mysql> ALTER TABLE tmp RENAME TO person_tbl;
-```
+```  
 
-#导出数据
+# 导出数据
 ```
 SELECT * FROM runoob_tbl 
 INTO OUTFILE '/tmp/tutorials.txt';
@@ -334,9 +334,9 @@ password *****
 ```
 $ mysqldump -u root -p database_name \
        | mysql -h other-host.com database_name
-```
+```  
 
-#导入数据
+# 导入数据
 ```
 LOAD DATA LOCAL INFILE 'dump.txt' INTO TABLE mytbl;
 ```
