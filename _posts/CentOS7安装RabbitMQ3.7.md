@@ -1,6 +1,6 @@
 ---
 title: CentOS 7 安装 RabbitMQ 3.7
-date: 2018-02-26 10:18:36
+date: 2018-03-16 17:18:36
 tags: RabbitMQ
 categories: CentOS 7 
 ---
