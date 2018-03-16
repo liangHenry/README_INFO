@@ -35,6 +35,7 @@ sudo yum install -y mongodb-org-3.6.3 mongodb-org-server-3.6.3 mongodb-org-shell
 ```
 exclude=mongodb-org,mongodb-org-server,mongodb-org-shell,mongodb-org-mongos,mongodb-org-tools
 ```
+<!--more-->
 ### 国内服务器启动报错  这个问题可以不解决直接启动 mongodb
 问题:
 

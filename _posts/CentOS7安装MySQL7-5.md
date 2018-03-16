@@ -15,7 +15,7 @@ categories: CentOS 7
 \# yum install mysql-devel
 ##重新启动
 \# service mysqld restart
-
+<!--more-->
 ##设置密码
 mysql -u root
 mysql> set password for 'root'@'localhost' =password('root');

@@ -26,6 +26,7 @@ tar -zvxf redis-4.0.2.tar.gz -C /usr/redis
 cd /usr/redis/redis-4.0.2
 make & make install
 ```
+<!--more-->
 ### 启动redis-server
 ```
 cd /usr/redis/redis-4.0.2/src
