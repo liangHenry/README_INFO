@@ -2,7 +2,7 @@
 title: CentOS 7 安装 MongoDB 3.6
 date: 2018-03-16 10:18:36
 tags: MongoDB
-categories: centOS 7 
+categories: CentOS 7 
 ---
 
 # CentOS 7 安装 MongoDB 3.6
@@ -146,11 +146,19 @@ vi /etc/mongod.conf
 bindIp:127.0.0.1,192.168.22.210
 ```
 找到#security,改为:
+
 ```
 security:
   authorization: enabled
 ```
 保存退出，重启mongo服务
+### 开放端口
+```
+#增加mongodb端口：27017
+sudo firewall-cmd --add-port=27017/tcp --permanent
+#重新加载防火墙设置
+sudo firewall-cmd --reload
+```
 
 ### 添加完用户可能之间出现这个错误
 错误1:
