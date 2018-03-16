@@ -1,7 +1,7 @@
 ---
-title: maven-实用总结
+title: Maven-实用总结
 date: 2017-07-19 00:15:23
-tags: maven
+tags: Maven
 categories: tool 
 ---
 # setting 配置  
