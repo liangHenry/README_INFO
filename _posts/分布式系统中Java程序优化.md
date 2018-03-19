@@ -289,10 +289,12 @@ class LikeCount {
     }
 
 }  
-```  
 
+```
+  
 两个变量likeApple和likePear分别代表喜欢苹果和喜欢梨，同步方法使得对likeApple的操作同时进行。由于LikeCount对象被锁，操作lifePear线程也必须等待，而实际上likeApple和likePear两个变量没有任何内在联系，因此可以将实现方式改为：  
-
+  
+  
 ```
 class LikeCount {
     //AtomicInteger;
