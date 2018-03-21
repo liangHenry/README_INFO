@@ -14,6 +14,8 @@ C:(Consistency)：一致性，A:(Availability)：可用性，P:(Partition tolera
 一个分布式系统不可能同时满足CAP。
 ![这里写图片描述](/images/CAP.png)
 
+<!--more-->
+
 ## 定理的应用：
 |  放弃CAP定理  |  说明  |
 | :---------------: |  :----: |
