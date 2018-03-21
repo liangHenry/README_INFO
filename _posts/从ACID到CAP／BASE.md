@@ -12,7 +12,7 @@ categories: 分布式
 # CAP是什么？
 C:(Consistency)：一致性，A:(Availability)：可用性，P:(Partition tolerance)分区容错性  
 一个分布式系统不可能同时满足CAP。
-![这里写图片描述](//img-blog.csdn.net/20180321103027774?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L2xpYW5nX2hlbnJ5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+![这里写图片描述](/images/CAP.png)
 
 ## 定理的应用：
 |  放弃CAP定理  |  说明  |
