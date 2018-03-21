@@ -186,6 +186,23 @@ print("hello world");
 效果：
 This is [link][id].
 [id]: http://lianghenry.github.io "my blog"  
+超链接：  
+
+```
+[超链接文字](url)
+```
+锚点链接: 
+首先是建立一个跳转的连接：  
+
+```
+[说明文字](#jump)
+```
+然后标记要跳转到的位置：  
+
+```
+<span id = "jump">跳转到的位置</span>
+```
+这样就可以了
 
 
 ## Latex 公式  
