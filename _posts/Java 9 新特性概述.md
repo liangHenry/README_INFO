@@ -61,6 +61,7 @@ jshell> int add(int x, int y) {
 jshell> add(1, 2) 
 $19 ==> 3
 ```
+
 # 集合、Stream和Optional
  在集合上，Java 9 增加 了 List.of()、Set.of()、Map.of() 和 Map.ofEntries()等工厂方法来创建不可变集合 ，如[代码清单4](#4)所示。   
  
@@ -77,6 +78,8 @@ Set.of(1, 2, 3);
 Map.of();
 Map.of("Hello", 1, "World", 2);
 ```
+
+
  Stream 中增加了新的方法 ofNullable、dropWhile、takeWhile 和 iterate。在 [代码清单5](#5) 中，流中包含了从 1 到 5 的元素。断言检查元素是否为奇数。第一个元素 1 被删除，结果流中包含 4 个元素。   
 
 <span id="5" />
@@ -90,9 +93,9 @@ public void testDropWhile() throws Exception {
         .count(); 
     assertEquals(4, count); 
 }
-```  
+```
 
- Collectors 中增加了新的方法 filtering 和 flatMapping。在[代码清单6](#6) 中，对于输入的 String 流，先通过 flatMapping 把 String 映射成 Integer 流 ，再把所有的 Integer 收集到一个集合中。  
+Collectors 中增加了新的方法 filtering 和 flatMapping。在[代码清单6](#6) 中，对于输入的 String 流，先通过 flatMapping 把 String 映射成 Integer 流 ，再把所有的 Integer 收集到一个集合中。  
  
 <span id="6" /> 
 清单 6 . Collectors 的 flatMapping 方法示例                
@@ -142,6 +145,7 @@ processHandle.onExit().whenCompleteAsync((handle, throwable) -> {
     } 
 });
 ```
+
 # 平台日志 API 和 服务
  Java 9 允许为 JDK 和应用配置同样的日志实现。新增的 System.LoggerFinder 用来管理 JDK 使用的日志记录器实现。JVM 在运行时只有一个系统范围的 LoggerFinder 实例。LoggerFinder 通过服务查找机制来加载日志记录器实现。默认情况下，JDK 使用 java.logging 模块中的 java.util.logging 实现。通过LoggerFinder 的 getLogger()方法就可以获取到表示日志记录器的 System.Logger 实现。应用同样可以使用System.Logger 来记录日志。这样就保证了 JDK 和应用使用同样的日志实现。我们也可以通过添加自己的System.LoggerFinder 实现来让 JDK 和应用使用 SLF4J 等其他日志记录框架。[代码清单9](#9) 中给出了平台日志 API 的使用示例。   
  <span id="9" /> 
@@ -155,6 +159,7 @@ public class Main {
     } 
 }
 ```
+
 # 反应式流（Reactive Streams）
  反应式编程的思想最近得到了广泛的流行。 在 Java 平台上有流行的反应式 库 RxJava 和 Reactor。反应式流规范的出发点是提供一个带非阻塞负压（ non-blocking backpressure ）                的异步流处理规范。反应式流规范的核心接口已经添加到了 Java9 中的 java.util.concurrent.Flow 类中。   
  
@@ -188,7 +193,7 @@ public class VarHandleTest {
         assertEquals(1, this.varHandle.getAcquire(this.handleTarget)); 
     } 
 }
-```  
+```
 
 # 改进方法句柄（Method Handle）
  类 java.lang.invoke.MethodHandles 增加了更多的静态方法来创建不同类型的方法句柄。 
@@ -229,6 +234,7 @@ public class IteratedLoopTest {
     } 
 }
 ```
+
 # 并发
  在并发方面，类 CompletableFuture 中增加了几个新的方法。completeAsync 使用一个异步任务来获取结果并完成该CompletableFuture。orTimeout 在 CompletableFuture 没有在给定的超时时间之前完成，使用TimeoutException 异常来完成 CompletableFuture。completeOnTimeout 与 o rTimeout类似，只不过它在超时时使用给定的值来完成 CompletableFuture。新的 Thread.onSpinWait 方法在当前线程需要使用忙循环来等待时，可以提高等待的效率。 
 # Nashorn
@@ -272,6 +278,7 @@ public class TestInputStream {
     } 
 }
 ```
+
  ObjectInputFilter 可以对 ObjectInputStream 中 包含的内容进行检查，来确保其中包含的数据是合法的。可以使用ObjectInputStream 的方法 setObjectInputFilter 来设置。ObjectInputFilter 在进行检查时，可以检查如对象图的最大深度、对象引用的最大数量、输入流中的最大字节数和数组的最大长度等限制，也可以对包含的类的名称进行限制。  
 # 改进应用安全性能  
 
@@ -289,6 +296,7 @@ public class SHA3 {
     } 
 }
 ```
+
 # 用户界面
  类 java.awt.Desktop 增加了新的与桌面进行互动的能力。可以使用 addAppEventListener 方法来添加不同应用事件的监听器，包括应用变为前台应用、应用隐藏或显示、屏幕和系统进入休眠与唤醒、以及用户会话的开始和终止等。还可以在显示关于窗口和配置窗口时，添加自定义的逻辑。在用户要求退出应用时，可以通过自定义处理器来接受或拒绝退出请求。在 AWT 图像支持方面，可以在应用中使用多分辨率图像。
 # 统一 JVM 日志
