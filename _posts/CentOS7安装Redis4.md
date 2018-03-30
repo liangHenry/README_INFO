@@ -27,6 +27,18 @@ cd /usr/redis/redis-4.0.2
 make & make install
 ```
 <!--more-->
+
+有可能出线问题：  
+
+```
+gcc: error: ../deps/jemalloc/lib/libjemalloc.a: No such file or directory
+```
+解决办法：
+
+```
+cd deps && make hiredis lua jemalloc linenoise
+```
+
 ### 启动redis-server
 ```
 cd /usr/redis/redis-4.0.2/src
