@@ -20,8 +20,11 @@ categories: CentOS 7
 mysql -u root
 mysql> set password for 'root'@'localhost' =password('root');
 ##远程设置
+
+```
     把在所有数据库的所有表的所有权限赋值给位于所有IP地址的root用户。
     mysql> grant all privileges on *.* to root@'%'identified by 'root';
+```
 
 
 ##开启防火墙设置
