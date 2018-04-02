@@ -28,7 +28,7 @@ mysql> set password for 'root'@'localhost' =password('root');
 
 
 ##开启防火墙设置
-\# firewall-cmd --zone=public --add-port=3306/tcp --permanent
+\# firewall-cmd --add-port=3306/tcp --permanent
 \# firewall-cmd --reload
 
 ##设置 /etc/my.cnf
